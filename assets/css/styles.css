@@ -210,6 +210,24 @@ footer .meta-row { display: flex; flex-wrap: wrap; gap: 18px; font-size: 13.5px;
   body { font-size: 16px; }
 }
 
+/* ---------- Nav dropdown (localities) ---------- */
+.nav-group { position: relative; display: flex; align-items: center; }
+.nav-group-top::after { content: " \25BE"; font-size: 10px; opacity: .55; }
+.nav-sub {
+  position: absolute; top: calc(100% + 4px); left: 0; min-width: 200px;
+  background: var(--paper-2); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: var(--shadow); padding: 6px; display: none; z-index: 60;
+}
+.nav-group:hover .nav-sub, .nav-group:focus-within .nav-sub { display: block; }
+.nav-sub a { display: block; white-space: nowrap; padding: 8px 12px; border-radius: 8px; font-size: 14px; color: var(--ink-soft); }
+.nav-sub a:hover { background: var(--gold-soft); color: var(--ink); }
+
+@media (max-width: 720px) {
+  .nav-group { flex-direction: column; align-items: stretch; }
+  .nav-sub { position: static; display: block; box-shadow: none; border: none; padding: 0 0 4px 14px; min-width: 0; background: transparent; }
+  .nav-group-top::after { content: ""; }
+}
+
 /* ---------- Print (checklist friendly) ---------- */
 @media print {
   .topbar, .cta-row, footer .meta-row, .nav-toggle, .no-print { display: none !important; }
